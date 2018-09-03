@@ -1,0 +1,51 @@
+{
+ 
+    "development": {
+ 
+        "username": "root",
+ 
+        "password": "Tomwatson123",
+ 
+        "database": "project_two",
+ 
+        "host": "127.0.0.1",
+ 
+        "port": 3306,
+
+        "dialect": "mysql"
+ 
+    },
+ 
+    "test": {
+ 
+        "username": "",
+ 
+        "password": null,
+ 
+        "database": "",
+ 
+        "host": "",
+
+        "port": 3306,
+ 
+        "dialect": "mysql"
+ 
+    },
+ 
+    "production": {
+ 
+        "username": "",
+ 
+        "password": null,
+ 
+        "database": "",
+ 
+        "host": "127.0.0.1",
+
+        "port": 3306,
+ 
+        "dialect": "mysql"
+ 
+    }
+ 
+}
