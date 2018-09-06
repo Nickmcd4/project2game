@@ -13,6 +13,7 @@ exports.signin = function(req, res) {
 }
 
 
+
 exports.dashboard = function(req, res) {
  
     var firstname = req.user.firstname;
@@ -31,3 +32,14 @@ exports.logout = function(req, res) {
     });
  
 }
+
+
+//*************************************************** */
+
+
+exports.characterCreate = function(req, res) {
+ 
+    res.render('charactercreate');
+ 
+}
+
