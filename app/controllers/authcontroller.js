@@ -12,9 +12,13 @@ exports.signin = function(req, res) {
  
 }
 
+
 exports.dashboard = function(req, res) {
  
-    res.render('dashboard');
+    var firstname = req.user.firstname;
+    // console.log(firstname);
+
+    res.render('dashboard', {firstname: firstname});
  
 }
 

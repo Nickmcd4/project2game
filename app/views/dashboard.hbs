@@ -2,14 +2,19 @@
 <html>
  
 <head>
-    <title>Passport with Sequelize</title>
+    <title>Project2 Game</title>
+    </title>
 </head>
  
 <body>
-    <h1>Welcome {{session.data.authenticated.username}}</h1>
+    <h1>Welcome {{firstname}}</h1>
     <h2>Dashboard</h2>
     <h5>Hurray! you are logged in.</h5>
  
+
+<form action="/logout">
+    <input type="submit" value="Logout" />
+</form>
 </body>
  
 </html>
