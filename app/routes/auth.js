@@ -9,10 +9,15 @@ module.exports = function(app, passport) {
  
  
     app.get('/signin', authController.signin);
+
+
+    app.get('/characterCreate', isLoggedIn, authController.characterCreate);
+
+    
  
  
     app.post('/signup', passport.authenticate('local-signup', {
-            successRedirect: '/dashboard',
+            successRedirect: '/characterCreate',
  
             failureRedirect: '/signup'
         }

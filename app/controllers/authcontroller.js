@@ -13,7 +13,10 @@ exports.signin = function(req, res) {
  
 }
 
+
+
 exports.dashboard = function(req, res) {
+
 
     var activeUserId = req.user.id;
 
@@ -35,3 +38,14 @@ exports.logout = function(req, res) {
     });
  
 }
+
+
+//*************************************************** */
+
+
+exports.characterCreate = function(req, res) {
+ 
+    res.render('charactercreate');
+ 
+}
+
