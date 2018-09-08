@@ -5,6 +5,7 @@ var session = require('express-session')
 var bodyParser = require('body-parser')
 var env = require('dotenv').load()
 var exphbs = require('express-handlebars')
+var path = require('path');
  
  
 //For BodyParser
@@ -25,9 +26,11 @@ app.use(passport.session()); // persistent login sessions
  
  
 //For Handlebars
-app.set('views', './app/views')
+app.use('/', express.static('./app/views'));
+app.set('views', path.join(__dirname, './app/views'));
 app.engine('hbs', exphbs({
-    extname: '.hbs'
+    extname: '.hbs',
+    defaultLayout: __dirname + '/app/views/layouts/main.hbs'
 }));
 app.set('view engine', '.hbs');
  
@@ -66,7 +69,7 @@ models.sequelize.sync().then(function() {
 });
  
  
-app.listen(5000, function(err) {
+app.listen((process.env.PORT || 5000), function(err) {
  
     if (!err)
  

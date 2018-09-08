@@ -18,11 +18,17 @@ exports.dashboard = function(req, res) {
     var activeUserId = req.user.id;
 
     models.char.findAll({where: {id: activeUserId}}).then(function(char) {
-        console.log(char);
-        res.render('dashboard',{
-            chars : char[0]
-        });
+        if (char.length == 0) {
+            res.render('dashboard-create');
+        }
+        else {
+            res.render('dashboard',{
+                chars : char[0]
+            });
+        };
     });
+
+    
  
 }
 
