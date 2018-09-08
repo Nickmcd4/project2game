@@ -5,7 +5,7 @@ var session = require('express-session')
 var bodyParser = require('body-parser')
 var env = require('dotenv').load()
 var exphbs = require('express-handlebars')
- 
+ var path = require('path');
  
 //For BodyParser
 app.use(bodyParser.urlencoded({
@@ -25,6 +25,8 @@ app.use(passport.session()); // persistent login sessions
  
  
 //For Handlebars
+app.use('/', express.static('./app/public'));
+app.set('views', path.join(__dirname, './app/public'));
 app.set('views', './app/views')
 app.engine('hbs', exphbs({
     extname: '.hbs'

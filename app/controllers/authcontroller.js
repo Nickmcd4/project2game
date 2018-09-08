@@ -17,9 +17,11 @@ exports.signin = function(req, res) {
 exports.dashboard = function(req, res) {
  
     var firstname = req.user.firstname;
-    // console.log(firstname);
+    console.log(firstname);
 
     res.render('dashboard', {firstname: firstname});
+
+
  
 }
 
@@ -38,8 +40,12 @@ exports.logout = function(req, res) {
 
 
 exports.characterCreate = function(req, res) {
- 
-    res.render('charactercreate');
+    var userId = req.user.id;
+
+
+    res.render('charactercreate', {userId: userId});
+    // character.getTest(res);
+    console.log(req.user.id);
  
 }
 

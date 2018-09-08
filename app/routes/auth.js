@@ -2,7 +2,7 @@ var authController = require('../controllers/authcontroller.js');
  
  
 module.exports = function(app, passport) {
- 
+    let currentUserId = "";
  
     app.get('/signup', authController.signup);
  
@@ -11,6 +11,10 @@ module.exports = function(app, passport) {
 
 
     app.get('/characterCreate', isLoggedIn, authController.characterCreate);
+
+    // app.get('/', function(req, res) {
+    //     currentUserId = req.user.id
+    // });
 
     
  
