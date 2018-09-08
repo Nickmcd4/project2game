@@ -1,3 +1,4 @@
+var models = require("../models/index");
 var exports = module.exports = {}
  
 exports.signup = function(req, res) {
@@ -13,8 +14,15 @@ exports.signin = function(req, res) {
 }
 
 exports.dashboard = function(req, res) {
- 
-    res.render('dashboard');
+
+    var activeUserId = req.user.id;
+
+    models.char.findAll({where: {id: activeUserId}}).then(function(char) {
+        console.log(char);
+        res.render('dashboard',{
+            chars : char[0]
+        });
+    });
  
 }
 

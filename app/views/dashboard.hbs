@@ -8,7 +8,27 @@
 <body>
     <h1>Welcome {{session.data.authenticated.username}}</h1>
     <h2>Dashboard</h2>
-    <h5>Hurray! you are logged in.</h5>
+    
+<table>
+    <thead> 
+        <th>Id</th> 
+        <th>Div id</th> 
+        <th>Char name</th> 
+        <th>HP</th> 
+        <th>Attack</th> 
+        <th>Defence</th> 
+    </thead> 
+    <tbody> 
+        <tr> 
+            <td>{{chars.id}}</td> 
+            <td>{{chars.div_id}}</td> 
+            <td>{{chars.char_name}}</td>
+            <td>{{chars.hp}}</td> 
+            <td>{{chars.attack}}</td> 
+            <td>{{chars.defence}}</td> 
+        </tr> 
+    </tbody> 
+</table> 
  
 </body>
  
