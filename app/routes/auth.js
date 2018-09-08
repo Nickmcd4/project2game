@@ -34,6 +34,9 @@ module.exports = function(app, passport) {
  
     app.get('/logout', authController.logout);
  
+    app.post('/characterCreate', function(req, res){
+        console.log(req.body);
+    })
  
     app.post('/signin', passport.authenticate('local-signin', {
             successRedirect: '/dashboard',
