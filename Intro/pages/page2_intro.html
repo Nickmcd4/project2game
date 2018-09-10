@@ -1,0 +1,136 @@
+<!-- Basic CSS Example -->
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+   <meta charset="UTF-8">
+  <script type="text/javascript" src="/Intro/assets/js/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <title>Basic CSS Example</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=MedievalSharp');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+html {
+    background-image:url(/Intro/assets/images/battle2.jpg);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;   
+    font-family: 'MedievalSharp', cursive;
+}
+      
+ h1 {
+      margin-bottom: 15px;
+      font-size: 60px;
+    }
+      
+     .container {
+      margin-bottom: 15px;
+      width:100%;
+      font-size: 35px;
+      color: white;
+      text-align: center;
+      text-decoration: underline;
+      background-color: black;
+      font-family: 'MedievalSharp', cursive;
+    }
+      
+      .musicButtonContainer {
+      margin-bottom: 15px;
+      width:20%;
+      float:right;
+      font-size: 20px;
+      color: white;
+      text-align: center;
+      background-color: black;
+      font-family: 'MedievalSharp', cursive;
+    }
+      
+      
+    .NextPage{
+        background-color:orangered; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        }
+      
+    .NextPage:hover {
+        background-color: #4CAF50; 
+        cursor: pointer;
+        }
+      
+      .musicButton {
+        background-color: black;
+        border: none;
+          
+      }
+  </style>
+</head>
+
+<body>
+<audio id="backgroundMusic">
+  <source src="/Intro/assets/music/bensound-epic.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="voiceOver">
+  <source src="/Intro/assets/music/Page2.mp3" type="audio/mpeg">
+</audio>
+
+
+<div class="container">
+ <div class="musicButtonContainer">
+     <button onclick="playAudio()" class="musicButton" type="button"><span class="glyphicon glyphicon-volume-up"></span></button>
+     <button onclick="pauseAudio()" class="musicButton" type="button"><span class="glyphicon glyphicon-volume-off"></span></button> 
+</div>
+ <br>
+ 
+  <h1>Intro</h1>
+    <p>The incessant warfare however, has not come without a cost...Generation after generation of your kin have laid their heads to ensure the prosperity of your people <br> <a href ="page3_intro%20.html"><button class="NextPage" href="/pages/page3_intro%20.html"><span class="glyphicon glyphicon-play"></span></button></a></p>
+    </div>
+  
+    <script type="text/javascript">
+       var x = document.getElementById("backgroundMusic"); 
+       var y = document.getElementById("voiceOver");
+       
+        
+        function playAudio() { 
+            x.play(); 
+            y.play();
+        } 
+
+        function pauseAudio() { 
+            x.pause(); 
+            y.pause();
+        }
+        
+        document.onload = playAudio();
+        
+       $('.musicButton').on('click', function(){
+            var z = document.getElementById("clickSound");
+            z.play();
+        });
+    
+    
+
+    </script>
+  
+
+</body>
+
+</html>
+  
