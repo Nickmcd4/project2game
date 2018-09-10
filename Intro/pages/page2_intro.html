@@ -5,7 +5,7 @@
 
 <head>
    <meta charset="UTF-8">
-  <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/Intro/assets/js/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <title>Basic CSS Example</title>
@@ -19,7 +19,7 @@
 }
 
 html {
-    background-image:url(/assets/images/battle2.jpg);
+    background-image:url(/Intro/assets/images/battle2.jpg);
     height: 100%;
     background-repeat: no-repeat;
     background-position: center center;
@@ -83,9 +83,12 @@ html {
 </head>
 
 <body>
-<audio id="myAudio">
-  <source src="/assets/music/bensound-epic.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
+<audio id="backgroundMusic">
+  <source src="/Intro/assets/music/bensound-epic.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="voiceOver">
+  <source src="/Intro/assets/music/Page2.mp3" type="audio/mpeg">
 </audio>
 
 
@@ -101,18 +104,27 @@ html {
     </div>
   
     <script type="text/javascript">
-        var x = document.getElementById("myAudio"); 
+       var x = document.getElementById("backgroundMusic"); 
+       var y = document.getElementById("voiceOver");
+       
         
         function playAudio() { 
             x.play(); 
+            y.play();
         } 
 
         function pauseAudio() { 
             x.pause(); 
-        } 
+            y.pause();
+        }
         
         document.onload = playAudio();
         
+       $('.musicButton').on('click', function(){
+            var z = document.getElementById("clickSound");
+            z.play();
+        });
+    
     
 
     </script>

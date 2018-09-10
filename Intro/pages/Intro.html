@@ -1,0 +1,97 @@
+<!-- Basic CSS Example -->
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <script type="text/javascript" src="/Intro/assets/js/jquery.min.js"></script>
+  <title>Basic CSS Example</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=MedievalSharp');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+html {
+    background-image:url(/Intro/assets/images/Parchment.jpg);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;   
+    font-family: 'MedievalSharp', cursive;
+}
+      
+ h1 {
+      margin-bottom: 15px;
+      font-size: 60px;
+    }
+      
+     .container {
+      margin-top:23%;
+      width:auto;
+      height: auto;
+      padding: 15px;
+      font-size: 35px;
+      color: white;
+      text-align: center;
+      text-decoration: underline;
+      background-color: black;
+      font-family: 'MedievalSharp', cursive;
+    }
+    
+    
+    button{
+        background-color:orangered; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+        }
+      
+    button:hover {
+        background-color: #4CAF50; 
+        cursor: pointer;
+        }
+      
+  </style>
+</head>
+
+<body>
+  
+<div class ="container">
+  <h1> Warrior Quest</h1>
+     <a href ="page1_intro.html"><button> Play Game</button></a>
+</div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <script type="text/javascript">
+        
+        $('.musicButton').on('click', function(){
+            var z = document.getElementById("clickSound");
+            z.play();
+        });
+    
+
+    </script>
+  
+
+</body>
+
+</html>

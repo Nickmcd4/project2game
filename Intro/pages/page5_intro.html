@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
     <meta charset="UTF-8">
-  <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/Intro/assets/js/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <title>Basic CSS Example</title>
@@ -20,7 +20,7 @@
 }
 
 html {
-    background-image:url(/assets/images/gods1.jpg);
+    background-image:url(/Intro/assets/images/gods1.jpg);
     height: 100%;
     background-repeat: no-repeat;
     background-position: center center;
@@ -84,9 +84,12 @@ html {
 </head>
 
 <body>
-<audio id="myAudio">
-  <source src="/assets/music/bensound-epic.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
+<audio id="backgroundMusic">
+  <source src="/Intro/assets/music/bensound-epic.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="voiceOver">
+  <source src="/Intro/assets/music/Page5.mp3" type="audio/mpeg">
 </audio>
 
 <div class="container">
@@ -97,22 +100,30 @@ html {
  <br>
  
   <h1>Intro</h1>
-    <p>They demand a sacrifice to appease them, and call on you to go through a trial of combat.<br> <a href ="page1_intro.html"><button class="NextPage"><span class="glyphicon glyphicon-play"></span></button></a></p>
+    <p>They demand a sacrifice to appease them, and call on you to go through a trial of combat.<br> <a href ="characterSheet.html"><button class="NextPage"><span class="glyphicon glyphicon-play"></span></button></a></p>
     </div>
   
       <script type="text/javascript">
-        var x = document.getElementById("myAudio"); 
-        
+        var x = document.getElementById("backgroundMusic"); 
+        var y = document.getElementById("voiceOver");
+
+          
         function playAudio() { 
             x.play(); 
+            y.play();
         } 
 
         function pauseAudio() { 
             x.pause(); 
+            y.pause();
         } 
         
         document.onload = playAudio();
         
+        $('.musicButton').on('click', function(){
+            var z = document.getElementById("clickSound");
+            z.play();
+        });
     
 
     </script>
