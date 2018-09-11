@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>VladKondrachuk</title>
-    <script type="text/javascript" src="/Intro/assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -15,12 +15,12 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box; 
+    
 }
      
      
 body {
-     background-image:url(/Intro/assets/images/Parchment.jpg);
+     background-image:url(../assets/images/Parchment.jpg);
      height: 100%;
       background-repeat: no-repeat;
       background-position: center center;
@@ -44,8 +44,7 @@ li {
     }
      
 .container { 
-      margin-top: 10%;
-      width:100%;
+      margin-top: 220px;
       font-size: 35px;
       color: white;
       text-align: center;
@@ -55,9 +54,10 @@ li {
     }
      
 .musicButtonContainer {
-      margin-bottom: 15px;
-      width:20%;
-      float:right;
+      left: 0;
+      top: 0;
+      margin-left: 80%;
+      position: relative;
       font-size: 20px;
       color: white;
       text-align: center;
@@ -81,13 +81,14 @@ header {
        position: fixed;
        left: 0;
        top: 0;
+       font-size: 35px;
        margin-bottom: auto;
-       height: 150px;
+       height: auto;
        text-align: center;
        width: 100%;
        background-color: black;
        color: white;
-       padding: 40px;
+       padding: 30px;
 }
      
      
@@ -99,14 +100,7 @@ header {
 
 <body>
    
-<header>
-        <div id="Copydiv">
-            <h2 id="copyright">Copyright &copy;</h2>
-        </div>
-                
-</header> 
    
-    <div class="container">
                 
         
                 
@@ -122,16 +116,21 @@ header {
         <audio id="clickSound">
             <source src="/Intro/assets/music/clicksound.mp3" type="audio/mpeg">
         </audio>
-
+ 
 <header>
-        <div id="Copydiv">
-            <h2 id="copyright">Chose Your Hero</h2>
-            <div class="musicButtonContainer">
-                 <button onclick="playAudio()" class="musicButton" type="button"><span class="glyphicon glyphicon-volume-up"></span></button>
-                 <button onclick="pauseAudio()" class="musicButton" type="button"><span class="glyphicon glyphicon-volume-off"></span></button> 
+       <div class="row">
+        
+          <div class="col-12">
+           <div class="musicButtonContainer">
+                 <button onclick="playAudio()" class="musicButton" type="button">Play Music</button>
+                 <button onclick="pauseAudio()" class="musicButton" type="button">Pause Music</button> 
             </div>
-        </div>
-                
+            <h2 id="copyright">Choose Your Hero</h2>
+            <input id="characterName" type="text" name="name" value="chose a name"><br>
+            
+            </div>      
+        
+    </div>       
 </header>            
                               
                                              
@@ -139,16 +138,18 @@ header {
                                                                            
                                                                                           
                                                                                                          
-                                                                                                                        
+        <div class="container">                                                                                                                
                                                                                                                                        
-<form>                                                                                                                                                 
-                                                                                                                                                                                    
+                                                                                                                                                 
+   <div class="row">
+        
+          <div class="col-12">                                                                                                                                                                                 
     <div class="row">
           <div class="col-3">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title"><b>Archer</b></h5>
-                <img src="/Intro/assets/images/archerAvatar.jpg" alt="Avatar" style="width:100%">
+                <img src="../assets/images/archerAvatar.jpg" alt="Avatar" style="width:100%">
                 <p>The Archer is a warden of the forest, capable with the bow and dagger</p>
                 <ul>
                     <li>Attack: 40</li>
@@ -157,7 +158,7 @@ header {
                     <li>Sneak: + 7</li>
 
                 </ul>
-                <a href="#" class="btn btn-primary">Chose</a>
+                <a href="#" class="btn btn-primary" id="ArcherSubmit">Chose</a>
               </div>
             </div>
           </div>
@@ -166,7 +167,7 @@ header {
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title"><b>Barbarian</b></h5>
-                <img src="/Intro/assets/images/barbarianAvatar.jpg" alt="Avatar" style="width:75%">
+                <img src="../assets/images/barbarianAvatar.jpg" alt="Avatar" style="width:75%">
                 <p>The Barbararian is a fierce warrior, the axe is his weapon of choice</p> 
                 <ul>
                     <li>Attack: 60</li>
@@ -175,7 +176,7 @@ header {
                     <li>Intimidation: + 5</li>
 
                 </ul>
-                <a href="#" class="btn btn-primary"><span class="glyphicons glyphicons-user-add"></span></a>
+                <a href="#" class="btn btn-primary" id="BarbarianSubmit">Chose</a>
               </div>
             </div>
           </div>
@@ -184,7 +185,7 @@ header {
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title"><b>Paladin</b></h5>
-                <img src="/Intro/assets/images/paladinAvatar.jpg" alt="Avatar" style="width:100%">
+                <img src="../assets/images/paladinAvatar.jpg" alt="Avatar" style="width:100%">
                 <p>The Paladin is a deffender of light, he relies on his sword and his faith in the old Gods to carry him through.</p>
                 <ul>
                     <li>Attack: 50</li>
@@ -193,7 +194,7 @@ header {
                     <li>Turn Undead: + 8</li>
 
                 </ul>
-                <a href="#" class="btn btn-primary">Chose</a>
+                <a href="#" class="btn btn-primary" id="PaladinSubmit">Chose</a>
               </div>
             </div>
           </div>
@@ -202,7 +203,7 @@ header {
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title"><b>Rogue</b></h5>
-                <img src="/Intro/assets/images/rogueAvatar.jpg" alt="Avatar" style="width:100%; height:150px;">
+                <img src="../assets/images/rogueAvatar.jpg" alt="Avatar" style="width:100%; height:150px;">
                 <p>The Rogue is a quick witted theif, she relies on her stealth and quick reflexes to win the battle.</p> 
                 <ul>
                     <li>Attack: 100</li>
@@ -211,78 +212,18 @@ header {
                     <li>Speech: + 7</li>
 
                 </ul>
-                <a href="#" class="btn btn-primary">Chose</a>
+                <a href="#" class="btn btn-primary" id="RogueSubmit">Chose</a>
               </div>
             </div>
           </div>
   
 </div>
-        </form>    
-    </div>     
+           
+    </div> 
+        </div>
+    </div>    
                         
-<!--
-
-                        
-                         <h2> Skill Points remaining <span id="skillPointsRemaining">20</span></h2>
-                         <div class="row ">
-                    <div class="col-lg-2 offset-lg-2 col-md-2 offset-md-2 col-sm-2 offset-sm-2 col-xs-2 offset-xs-2">
-                                <h4>The Score is: <span id="score_html">0</span></h4>
-                    </div>      
-                                
-                                
-                    <div class="col-lg-2 col-md-2  col-sm-2  col-xs-2">      
-                                <h4>Wins: <span id="AttackStat">#</span></h4>
-                    </div>     
-
-                    <div class="col-lg-2 col-md-2  col-sm-2  col-xs-2"> 
-                                <h4>Losses: <span id="HealthStat">#</span></h4>
-                    </div>  
-
-                    <div class="col-lg-2 col-md-2  col-sm-2  col-xs-2"> 
-                        <h4>Number to Win: <span id="DefenseStat">#</span></h4>
-                    </div> 
-                          
-                </div> 
-                       
-                        
-                        
-                        
-                        
-                        <h3>Attack</h3> 
-                        
-                                <button type="button" class="btn btn-default btn-sm" id="attackPlus">
-                                        <span class="glyphicon glyphicon-plus"></span>
-                                </button>
-
-                                <button type="button" class="btn btn-default btn-sm" id="attackMinus">
-                                        <span class="glyphicon glyphicon-minus"></span>
-                                </button>
-                        <h3>Health</h3>
-                                <button type="button" class="btn btn-default btn-sm" id="healthPlus">
-                                        <span class="glyphicon glyphicon-plus"></span>
-                                </button>
-
-                                <button type="button" class="btn btn-default btn-sm"  id="healthMinus">
-                                        <span class="glyphicon glyphicon-minus"></span>
-                                </button>
-                        <h3>Defense</h3>
-                                <button type="button" class="btn btn-default btn-sm" id="defensePlus">
-                                        <span class="glyphicon glyphicon-plus"></span>
-                                </button>
-
-                                <button type="button" class="btn btn-default btn-sm" id="defenseMinus">
-                                        <span class="glyphicon glyphicon-minus"></span>
-                                </button>
-                        
-                        
-                        <br><input type="submit" id="character_SubmitBtn" value="Submit">
-                        -->
-  
     
-
-
-
-                        <!--Footer-->      
 <footer>
         <div id="Copydiv">
             <h2 id="copyright">Copyright &copy;</h2>
@@ -291,93 +232,144 @@ header {
 </footer>
 
 
-                <script>
+<script>
 
-                        // VARIABLES
-                        // ==========================================================================
-                    
-                        // We start the game with a score of 0.
-                        var skillPointsRemaining = 20;
-                        // Variable to hold the index of current question.
-                        var AttackSkillPoints = 0;
-                        var HitSkillPoints = 0;
-                        var DefenseSkillPoints = 0;
-                    
-                        // FUNCTIONS
-                        // ==============================================================================
-                      
-                    
-                        // Function that updates the remaining skillPoints...
-                        function updateRemainingSkillPoints() {
-                          document.querySelector("#skillPointsRemaining").innerHTML = "Skill Points: " + skillPointsRemaining;
-                        }
-                    
-                    
-                        // MAIN PROCESS
-                        // ==============================================================================
-                    
-                        // Calling functions to start the game.
-                        updateRemainingSkillPoints();
-                    
-                        // When the user presses a key, it will run the following function...
-                        $("#attackPlus").click(function(){
-                                AttackSkillPoints++;
-                                skillPointsRemaining--;
-                                updateRemainingSkillPoints();
-                                document.querySelector("#AttackStat").innerHTML = "Attack Points: " + AttackSkillPoints;
-                                console.log(AttackSkillPoints);
+    var currentUserId = $("#userId").attr("data-value");
 
-                                });
+    console.log(currentUserId);
+
+    console.log("hello");
+
+
+                $("#ArcherSubmit").on("click", function (event) {
+                    event.preventDefault();
+                    
+                    var newCharacter = {
+                        characterType: "Archer",
+                        characterName: $("#characterName").val().trim(),
+                        hp: 350,
+                        attack: 40,
+                        defense: 80
                         
-                        $("#attackMinus").click(function(){
-                                AttackSkillPoints--;
-                                skillPointsRemaining++;
-                                updateRemainingSkillPoints();
-                                document.querySelector("#AttackStat").innerHTML = "Attack Points: " + AttackSkillPoints;
-                                console.log(AttackSkillPoints);
-
-                                });
-                        
-                        $("#healthPlus").click(function(){
-                                HitSkillPoints++;
-                                skillPointsRemaining--;
-                                updateRemainingSkillPoints();
-                                document.querySelector("#HealthStat").innerHTML = "Health Points: " + HitSkillPoints;
-                                console.log(HitSkillPoints);
-
-                                });
-
-                         $("#healthMinus").click(function(){
-                                HitSkillPoints--;
-                                skillPointsRemaining++;
-                                updateRemainingSkillPoints();
-                                document.querySelector("#HealthStat").innerHTML = "Health Points: " + HitSkillPoints;
-                                console.log(HitSkillPoints);
-
-                                });
-
-                          $("#defensePlus").click(function(){
-                                DefenseSkillPoints++;
-                                skillPointsRemaining--;
-                                updateRemainingSkillPoints();
-                                document.querySelector("#DefenseStat").innerHTML = "Defense Points: " + DefenseSkillPoints;
-                                console.log(DefenseSkillPoints);
-
-                                });
-                        
-                        $("#defenseMinus").click(function(){
-                                DefenseSkillPoints--;
-                                skillPointsRemaining++;
-                                updateRemainingSkillPoints();
-                                document.querySelector("#DefenseStat").innerHTML = "Defense Points: " + DefenseSkillPoints;
-                                console.log(DefenseSkillPoints);
-
-                                });
+                    };
                     
+                    console.log("Created new character");
+                    console.log(newCharacter);
+
+
+                    $.post("/dashboard", {
+                        data: newCharacter
+                    }).then(function (data) {
+                        console.log("Created new character");
+                        console.log(data);
+
+                    });
+
+                });
                     
+            
+    
+            $("#BarbarianSubmit").on("click", function (event) {
+                    event.preventDefault();
+                    
+                    var newCharacter = {
+                        characterType: "Barbarian",
+                        characterName: $("#characterName").val().trim(),
+                        hp: 500,
+                        attack: 60,
+                        defense: 20
                        
+                        
+                    };
+                
+                    console.log("Created new character");
+                    console.log(newCharacter);
+
+                    $.post("/dashboard", {
+                        data: newCharacter
+                    }).then(function (data) {
+                        console.log("Created new character");
+                        console.log(data);
+
+                    });
+
+                });
+    
+            $("#PaladinSubmit").on("click", function (event) {
+                    event.preventDefault();
                     
-                      </script>
+                    var newCharacter = {
+                        characterType: "Paladin",
+                        characterName: $("#characterName").val().trim(),
+                        hp: 400,
+                        attack: 50,
+                        defense: 60
+                        
+                        
+                    };
+                
+                    console.log("Created new character");
+                    console.log(newCharacter);
+
+                    $.post("/dashboard", {
+                        data: newCharacter
+                    }).then(function (data) {
+                        console.log("Created new character");
+                        console.log(data);
+
+                    });
+
+                });
+    
+            $("#RogueSubmit").on("click", function (event) {
+                    event.preventDefault();
+                    
+                    var newCharacter = {
+                        characterType: "Rogue",
+                        characterName: $("#characterName").val().trim(),
+                        hp: 350,
+                        attack: 40,
+                        defense: 80
+                        
+                        
+                    };
+                
+                    console.log("Created new character");
+                    console.log(newCharacter);
+
+                    $.post("/dashboard", {
+                        data: newCharacter
+                    }).then(function (data) {
+                        console.log("Created new character");
+                        console.log(data);
+
+                    });
+
+                });
+                
+        var x = document.getElementById("backgroundMusic"); 
+        var y = document.getElementById("voiceOver");
+        
+        
+        function playAudio() { 
+            x.play(); 
+            y.play();
+        } 
+
+        function pauseAudio() { 
+            x.pause(); 
+            y.pause();
+        } 
+        
+        /*document.onload = playAudio();
+        
+        $('.btn btn-primary').on('click', function(){
+            var z = document.getElementById("clickSound");
+            z.play();
+        });
+        */
+                    
+</script>
 
 </body>
 </html>
