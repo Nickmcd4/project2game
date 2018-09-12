@@ -1,3 +1,4 @@
+var models = require("../models/index");
 var exports = module.exports = {}
  
 exports.signup = function(req, res) {
@@ -15,12 +16,20 @@ exports.signin = function(req, res) {
 
 
 exports.dashboard = function(req, res) {
- 
-    var firstname = req.user.firstname;
-    console.log(firstname);
 
-    res.render('dashboard', {firstname: firstname});
 
+    var activeUserId = req.user.id;
+
+    models.char.findAll({where: {id: activeUserId}}).then(function(char) {
+        if (char.length == 0) {
+            res.render('dashboard-create');
+        }
+        else {
+            res.render('dashboard',{
+                chars : char[0]
+            });
+        };
+    });
 
  
 }
