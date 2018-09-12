@@ -49,7 +49,12 @@ module.exports = function(sequelize, Sequelize) {
  
  
     });
- 
+    
+    // User.associate = function(models){
+    //     User.hasMany(models.Character, {
+    //         onDelete: "cascade"
+    //     })
+    // }
     return User;
  
 };

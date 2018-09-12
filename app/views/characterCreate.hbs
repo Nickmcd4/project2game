@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html>
- 
+
 <head>
     <title>Project 2 Game</title>
+      <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="assets/js/app.js"></script>
+  
     </title>
 </head>
- 
-<body>
- <h1>Create Character</h1>
 
-<form action="/logout">
-    <input type="submit" value="Logout" />
+<body>
+    <h1>Create Character</h1>
+
+    <h1 id="userId" data-value="{{userId}}">{{userId}}</h1>
+
+<form class="characterSubmit">
+<input id="characterType" type="text" name="characterType">
+<input id="Charactername" type="text" name="name"><br>
+<input id="hp" type="text" name="hp"><br>
+<input id="attack" type="text" name="attack"><br>
+<input id="defense" type="text" name="defense"><br>
+
+
+<input type="submit"></input>
 </form>
+
+    <form action="/logout">
+        <input type="submit" value="Logout" />
+    </form>
 </body>
- 
+
 </html>

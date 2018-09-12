@@ -31,7 +31,6 @@ exports.dashboard = function(req, res) {
         };
     });
 
-    
  
 }
 
@@ -50,8 +49,12 @@ exports.logout = function(req, res) {
 
 
 exports.characterCreate = function(req, res) {
- 
-    res.render('charactercreate');
+    var userId = req.user.id;
+
+
+    res.render('charactercreate', {userId: userId});
+    // character.getTest(res);
+    console.log(req.user.id);
  
 }
 

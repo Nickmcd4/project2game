@@ -7,7 +7,6 @@ var env = require('dotenv').load()
 var exphbs = require('express-handlebars')
 var path = require('path');
  
- 
 //For BodyParser
 app.use(bodyParser.urlencoded({
     extended: true
@@ -23,9 +22,6 @@ app.use(session({
 })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
- 
- 
-//For Handlebars
 app.use('/', express.static('./app/views'));
 app.set('views', path.join(__dirname, './app/views'));
 app.engine('hbs', exphbs({
