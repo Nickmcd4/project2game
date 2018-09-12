@@ -17,8 +17,6 @@ module.exports = function(app, passport) {
     //     currentUserId = req.user.id
     // });
 
-    
- 
  
     app.post('/signup', passport.authenticate('local-signup', {
             successRedirect: '/characterCreate',
@@ -30,7 +28,6 @@ module.exports = function(app, passport) {
  
  
     app.get('/dashboard', isLoggedIn, authController.dashboard);
- 
  
  
     app.get('/logout', authController.logout);
