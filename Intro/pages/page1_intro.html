@@ -133,7 +133,7 @@ html {
     <script type="text/javascript">
         var x = document.getElementById("backgroundMusic"); 
         var y = document.getElementById("voiceOver");
-        
+        var z = document.getElementById("clickSound");
         
         function playAudio() { 
             x.play(); 
@@ -148,7 +148,7 @@ html {
         document.onload = playAudio();
         
         $('.NextPage').on('click', function(){
-            var z = document.getElementById("clickSound");
+            
             z.play();
         });
     
