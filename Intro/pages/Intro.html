@@ -46,7 +46,7 @@ header {
        width: 100%;
        background-color: black;
        color: white;
-       padding: 2px;
+       padding: 15px;
        font-family: 'MedievalSharp', cursive;
 }
       
@@ -88,6 +88,10 @@ header {
 
 <body>
 
+<audio id="clickSound">
+  <source src="../assets/music/clicksound.mp3" type="audio/mpeg">
+</audio>
+
 <header>
        <div class="row">
           <div class="col-12">
@@ -98,6 +102,18 @@ header {
         </div>     
 </header> 
 
+
+<script type="text/javascript">
+    
+       var z = document.getElementById("clickSound");
+    
+        $('.NextPage').on('click', function(){
+            z.play();
+        });
+    
+
+    </script>
+    
 </body>
 
 </html>
