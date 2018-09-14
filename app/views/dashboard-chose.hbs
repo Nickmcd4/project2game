@@ -1,15 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
     <title>Create Your Character</title>
-    <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/css/bootstrap.min.css" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="assets/bootstrap/js/bootstrap.js.map" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    
- 
+
  <style>
        @import url('https://fonts.googleapis.com/css?family=MedievalSharp');
 *{
@@ -106,15 +100,15 @@ header {
                 
                     
         <audio id="backgroundMusic">
-            <source src="/Intro/assets/music/bensound-epic.mp3" type="audio/mpeg">
+            <source src="assets/music/bensound-epic.mp3" type="audio/mpeg">
         </audio>
 
         <audio id="voiceOver">
-            <source src="/Intro/assets/music/Page1.mp3" type="audio/mpeg">
+            <source src="assets/music/Page1.mp3" type="audio/mpeg">
         </audio>
 
         <audio id="clickSound">
-            <source src="/Intro/assets/music/clicksound.mp3" type="audio/mpeg">
+            <source src="assets/music/clicksound.mp3" type="audio/mpeg">
         </audio>
  
 <header>
@@ -126,7 +120,7 @@ header {
                  <button onclick="pauseAudio()" class="musicButton" type="button">Pause Music</button> 
             </div>
             <h2 id="copyright">Choose Your Hero</h2>
-            <input id="characterName" type="text" name="name" value="chose a name"><br>
+            <input id="characterName" type="text" name="name" value="Player"><br>
             
             </div>      
         
@@ -158,7 +152,7 @@ header {
                     <li>Sneak: + 7</li>
 
                 </ul>
-                <a href="#" class="btn btn-primary" id="ArcherSubmit">Chose</a>
+                <a href="#" class="btn btn-primary redirect" id="ArcherSubmit">Chose</a>
               </div>
             </div>
           </div>
@@ -176,7 +170,7 @@ header {
                     <li>Intimidation: + 5</li>
 
                 </ul>
-                <a href="#" class="btn btn-primary" id="BarbarianSubmit">Chose</a>
+                <a href="#" class="btn btn-primary redirect" id="BarbarianSubmit">Chose</a>
               </div>
             </div>
           </div>
@@ -194,7 +188,7 @@ header {
                     <li>Turn Undead: + 8</li>
 
                 </ul>
-                <a href="#" class="btn btn-primary" id="PaladinSubmit">Chose</a>
+                <a href="#" class="btn btn-primary redirect" id="PaladinSubmit">Chose</a>
               </div>
             </div>
           </div>
@@ -212,7 +206,7 @@ header {
                     <li>Speech: + 7</li>
 
                 </ul>
-                <a href="#" class="btn btn-primary" id="RogueSubmit">Chose</a>
+                <a href="#" class="btn btn-primary redirect" id="RogueSubmit">Chose</a>
               </div>
             </div>
           </div>
@@ -245,6 +239,7 @@ header {
                     event.preventDefault();
                     
                     var newCharacter = {
+                        id: 1,
                         characterType: "Archer",
                         characterName: $("#characterName").val().trim(),
                         hp: 350,
@@ -257,7 +252,7 @@ header {
                     console.log(newCharacter);
 
 
-                    $.post("/dashboard", {
+                    $.post("/api/userdata", {
                         data: newCharacter
                     }).then(function (data) {
                         console.log("Created new character");
@@ -273,6 +268,7 @@ header {
                     event.preventDefault();
                     
                     var newCharacter = {
+                        id: 2,
                         characterType: "Barbarian",
                         characterName: $("#characterName").val().trim(),
                         hp: 500,
@@ -285,7 +281,7 @@ header {
                     console.log("Created new character");
                     console.log(newCharacter);
 
-                    $.post("/dashboard", {
+                    $.post("/api/userdata", {
                         data: newCharacter
                     }).then(function (data) {
                         console.log("Created new character");
@@ -299,6 +295,7 @@ header {
                     event.preventDefault();
                     
                     var newCharacter = {
+                        id: 3,
                         characterType: "Paladin",
                         characterName: $("#characterName").val().trim(),
                         hp: 400,
@@ -311,7 +308,7 @@ header {
                     console.log("Created new character");
                     console.log(newCharacter);
 
-                    $.post("/dashboard", {
+                    $.post("/api/userdata", {
                         data: newCharacter
                     }).then(function (data) {
                         console.log("Created new character");
@@ -325,6 +322,7 @@ header {
                     event.preventDefault();
                     
                     var newCharacter = {
+                        id: 4,
                         characterType: "Rogue",
                         characterName: $("#characterName").val().trim(),
                         hp: 350,
@@ -337,7 +335,7 @@ header {
                     console.log("Created new character");
                     console.log(newCharacter);
 
-                    $.post("/dashboard", {
+                    $.post("/api/userdata", {
                         data: newCharacter
                     }).then(function (data) {
                         console.log("Created new character");
@@ -359,7 +357,11 @@ header {
         function pauseAudio() { 
             x.pause(); 
             y.pause();
-        } 
+        }
+
+        $('.redirect').click(function(){
+            window.location.href='/fight';
+        });
         
         /*document.onload = playAudio();
         

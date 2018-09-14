@@ -7,9 +7,8 @@
 </head>
  
 <body>
-    <h1>Welcome {{firstname}}</h1>
-    <h2>Dashboard</h2>
 
+    <h2>Fight Page</h2>
     <h2>Here's your char:</h2>
     
 <table>
@@ -21,15 +20,17 @@
         <th>Attack</th> 
         <th>Defence</th> 
     </thead> 
-    <tbody> 
+    <tbody>
+        {{#each chars}}
         <tr> 
-            <td>{{chars.id}}</td> 
-            <td>{{chars.div_id}}</td> 
-            <td>{{chars.char_name}}</td>
-            <td>{{chars.hp}}</td> 
-            <td>{{chars.attack}}</td> 
-            <td>{{chars.defence}}</td> 
-        </tr> 
+            <td>{{id}}</td> 
+            <td>{{div_id}}</td> 
+            <td>{{char_name}}</td>
+            <td>{{hp}}</td> 
+            <td>{{attack}}</td> 
+            <td>{{defence}}</td> 
+        </tr>
+        {{/each}}
     </tbody> 
 </table> 
  
