@@ -14,14 +14,7 @@ exports.signin = function(req, res) {
 }
 
 exports.dashboardChose = function(req, res) {
-
-    //{where: {id: activeUserId}}
-    //var activeUserId = req.user.id;
-
     res.render('dashboard-chose');
-
-
-
 }
 
 exports.dashboardFight = function(req, res) {
