@@ -1,40 +1,46 @@
 var authController = require('../controllers/authcontroller.js');
+var models = require("../models/index");
 
  
  
 module.exports = function(app, passport) {
-    let currentUserId = "";
+    var charSelected;
  
     app.get('/signup', authController.signup);
  
  
     app.get('/signin', authController.signin);
 
-
-    app.get('/characterCreate', isLoggedIn, authController.characterCreate);
-
-    // app.get('/', function(req, res) {
-    //     currentUserId = req.user.id
-    // });
-
  
     app.post('/signup', passport.authenticate('local-signup', {
-            successRedirect: '/characterCreate',
- 
+            successRedirect: '/dashboard',
             failureRedirect: '/signup'
         }
  
     ));
- 
- 
-    app.get('/dashboard', isLoggedIn, authController.dashboard);
- 
- 
+
     app.get('/logout', authController.logout);
+
+    app.get('/dashboard', isLoggedIn, authController.dashboardChose);
+    app.get('/fight', isLoggedIn, authController.dashboardFight);
+    
+    app.post('/api/userdata', function(req, res) {
+        charSelected = req.body.data.id;
+        userName = req.body.data.characterName;
+    });
+
+    app.get('/api/userdata', function(req, res) {
+
+        models.char.findAll().then(function(data) {
+            res.json({
+                userSelected: charSelected,
+                userNameSelected: userName,
+                chars : data
+            });
+        });
+
  
-    app.post('/characterCreate', function(req, res){
-        console.log(req.body);
-    })
+    });
  
     app.post('/signin', passport.authenticate('local-signin', {
             successRedirect: '/dashboard',
