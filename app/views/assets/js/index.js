@@ -3,12 +3,12 @@ window.onload = function() {
 
     var timer = setTimeout(function() {
         window.location='/welcome'
-    }, 53000);
+    }, 45000);
 
     timer();
 
 
-    document.getElementById("skipper").onclick = function () {
+    document.getElementById("#skipper").onclick = function () {
         window.location = "/welcome";
     };
 }

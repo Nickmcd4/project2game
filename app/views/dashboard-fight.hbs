@@ -152,41 +152,8 @@
 
 
     <script type="text/javascript">
-        $(document).ready(function(){
-
-            if(newCharacter1.characterType === "Archer"){
-                 $(".characterImg").attr("src", "assets/images/archerChar.png");
-                $(".characterContainer").css("width", "15%");
-                $(".characterContainer").css("height", "39%");
-            }
-
-            if(newCharacter1.characterType === "Barbarian"){
-                 $(".characterImg").attr("src", "assets/images/barbarian.png");
-                $(".characterContainer").css("width", "15%");
-                $(".characterContainer").css("height", "39%");
-                $(".characterContainer").css("bottom", "35%");
-            
-            }
-            if(newCharacter1.characterType === "Paladin"){
-                 $(".characterImg").attr("src", "assets/images/paladin.png");
-                $(".characterContainer").css("width", "15%");
-                $(".characterContainer").css("height", "45%");
-                $(".characterContainer").css("bottom", "30%");
-                
-            
-            }
-            if(newCharacter1.characterType === "Rogue"){
-                 $(".characterImg").attr("src", "assets/images/rogue.png");
-                $(".characterContainer").css("width", "15%");
-                $(".characterContainer").css("height", "45%");
-                $(".characterContainer").css("bottom", "30%");
-                
-            
-            }
 
 
-
-        })
         $(document).ready(function () {
 
             let imageNum = Math.floor((Math.random() * 10) + 1);
@@ -633,10 +600,12 @@
 
             if (newCharacter1.hp <= 0) {
                 alert("you lose");
+                window.location = "/leaderboard";
             }
 
             if (newCharacter2.hp <= 0) {
                 alert("you win");
+                window.location = "/leaderboard";
             }
 
 
@@ -647,7 +616,41 @@
 
 
 
+        $(document).ready(function(){
 
+            if(newCharacter1.characterType === "Archer"){
+                 $(".characterImg").attr("src", "assets/images/archerChar.png");
+                $(".characterContainer").css("width", "15%");
+                $(".characterContainer").css("height", "39%");
+            }
+
+            if(newCharacter1.characterType === "Barbarian"){
+                 $(".characterImg").attr("src", "assets/images/barbarian.png");
+                $(".characterContainer").css("width", "15%");
+                $(".characterContainer").css("height", "39%");
+                $(".characterContainer").css("bottom", "35%");
+            
+            }
+            if(newCharacter1.characterType === "Paladin"){
+                 $(".characterImg").attr("src", "assets/images/paladin.png");
+                $(".characterContainer").css("width", "15%");
+                $(".characterContainer").css("height", "45%");
+                $(".characterContainer").css("bottom", "30%");
+                
+            
+            }
+            if(newCharacter1.characterType === "Rogue"){
+                 $(".characterImg").attr("src", "assets/images/rogue.png");
+                $(".characterContainer").css("width", "15%");
+                $(".characterContainer").css("height", "45%");
+                $(".characterContainer").css("bottom", "30%");
+                
+            
+            }
+
+
+
+        })
 
         /*
          */
