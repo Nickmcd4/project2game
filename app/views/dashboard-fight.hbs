@@ -37,26 +37,32 @@
 
                     var newCharacter1 = {};
                     var newCharacter2 = {};
-                    var newCharacter3 = {};
-                    var newCharacter4 = {};
 
                     $.getJSON('/api/userdata', function (data) {
+                        console.log(data);
 
-                        newCharacter1 = {
-                            characterType: data.chars[0].char_name,
-                            characterName: data.chars[0].userNameSelected,
-                            hp: data.chars[0].hp,
-                            attack: data.chars[0].attack,
-                            defense: data.chars[0].defence
-                        };
 
-                        newCharacter2 = {
+
+
+                        var charSelected = data.chars[data.userSelected-1];
+                        console.log(charSelected);
+
+                          newCharacter1 = {
+                                characterType: charSelected.char_name,
+                                characterName: data.userNameSelected,
+                                hp: charSelected.hp,
+                                attack: charSelected.attack,
+                                defense: charSelected.defence
+                            }
+                            
+                         newCharacter2 = {
                             characterType: "Enemy",
                             characterName: "Monster",
                             hp: 500 - (Math.floor((Math.random() * 100) + 1)),
                             attack: 100 - (Math.floor((Math.random() * 70) + 1)),
                             defense: 100 - (Math.floor((Math.random() * 70) + 1))
                         };
+
 
                             console.log("Character Type :" + newCharacter2.characterType);
                             console.log("Character Name :" + newCharacter2.characterName);
