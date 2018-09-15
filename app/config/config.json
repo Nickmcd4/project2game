@@ -2,16 +2,19 @@
  
     "development": {
  
-        "username": "root",
+        "username": "",
  
-        "password": "root",
- 
-        "database": "characters_db",
- 
-        "host": "127.0.0.1",
- 
-        "port": 3306,
 
+        "password": "",
+
+
+ 
+        "database": "wnkuqw7nsb774a11",
+ 
+        "host": "bbj31ma8tye2kagi.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+
+        "port": 3306,
+ 
         "dialect": "mysql"
  
     },
@@ -20,30 +23,22 @@
  
         "username": "",
  
-        "password": null,
+        "password": "",
  
-        "database": "",
+        "database": "wnkuqw7nsb774a11",
  
-        "host": "",
+        "host": "bbj31ma8tye2kagi.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
 
         "port": 3306,
  
         "dialect": "mysql"
  
+ 
     },
  
     "production": {
- 
-        "username": "",
- 
-        "password": null,
- 
-        "database": "",
- 
-        "host": "127.0.0.1",
 
-        "port": 3306,
- 
+        "use_env_variable": "JAWSDB_URL",
         "dialect": "mysql"
  
     }
