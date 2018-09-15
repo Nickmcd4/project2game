@@ -40,42 +40,20 @@
 
                     var newCharacter1 = {};
                     var newCharacter2 = {};
-                    var newCharacter3 = {};
-                    var newCharacter4 = {};
 
                     $.getJSON('/api/userdata', function (data) {
+                        console.log(data);
 
-                        newCharacter1 = {
-                            characterType: data.chars[0].char_name,
-                            characterName: data.chars[0].userNameSelected,
-                            hp: data.chars[0].hp,
-                            attack: data.chars[0].attack,
-                            defense: data.chars[0].defence
-                        };
+                        var charSelected = data.chars[data.userSelected-1];
+                        console.log(charSelected);
 
-                        newCharacter2 = {
-                            characterType: data.chars[1].char_name,
-                            characterName: data.chars[1].userNameSelected,
-                            hp: data.chars[1].hp,
-                            attack: data.chars[1].attack,
-                            defense: data.chars[1].defence
-                        };
-
-                        newCharacter3 = {
-                            characterType: data.chars[2].char_name,
-                            characterName: data.chars[2].userNameSelected,
-                            hp: data.chars[2].hp,
-                            attack: data.chars[2].attack,
-                            defense: data.chars[2].defence
-                        };
-
-                        newCharacter4 = {
-                            characterType: data.chars[3].char_name,
-                            characterName: data.chars[3].userNameSelected,
-                            hp: data.chars[3].hp,
-                            attack: data.chars[3].attack,
-                            defense: data.chars[3].defence
-                        };
+                            newCharacter1 = {
+                                characterType: charSelected.char_name,
+                                characterName: data.userNameSelected,
+                                hp: charSelected.hp,
+                                attack: charSelected.attack,
+                                defense: charSelected.defence
+                            }
 
                     });
 

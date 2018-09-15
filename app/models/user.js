@@ -41,11 +41,6 @@ module.exports = function(sequelize, Sequelize) {
         last_login: {
             type: Sequelize.DATE
         },
-
-        user_choice: {
-            type: Sequelize.INTEGER,
-            defaultValue: 1
-        },
  
         status: {
             type: Sequelize.ENUM('active', 'inactive'),
