@@ -19,6 +19,12 @@ exports.signin = function(req, res) {
  
 }
 
+exports.leaderboard = function(req, res) {
+ 
+    res.render('leaderboard');
+ 
+}
+
 exports.dashboardChose = function(req, res) {
     res.render('dashboard-chose');
 }

@@ -24,19 +24,24 @@ body {
     background-size: cover;
     font-family: 'MedievalSharp', cursive;
     text-align: center;
-    margin-top:5%;
+    margin-top:2%;
     height : 550px;
     width:500px;
-    border-radius: 10%;
     font-size:35px;
     color:black;
     ;
   }
+  
+
+  
 
  #signupContainer{
-      padding:60px;
+      padding:65px;
       display: inline-block;
       font-size: 60px;
+      width:500px;
+      height:550px;
+      overflow:auto;
   }
 
   h1{
@@ -44,6 +49,32 @@ body {
     color:goldenrod;
     margin-top:5%;
   }
+
+  h2{
+    font-size:50px;
+    color:red;
+    
+  }
+
+  ::-webkit-scrollbar {
+    width: 30px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #888;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    
+    background: url("../images/Chainmail.jpg") no-repeat center center fixed; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
 
   #sword{
     position: absolute;
@@ -101,5 +132,6 @@ body {
     height:500px;
     transform: rotate(50deg);
   }
+
 
 
