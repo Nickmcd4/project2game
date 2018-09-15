@@ -33,9 +33,6 @@
                 <input type="submit" value="Submit">
                 </form>
 
-
-
-
                 <script type="text/javascript">
 
                     var newCharacter1 = {};
@@ -44,17 +41,34 @@
                     $.getJSON('/api/userdata', function (data) {
                         console.log(data);
 
+
+
+
                         var charSelected = data.chars[data.userSelected-1];
                         console.log(charSelected);
 
-                            newCharacter1 = {
+                          newCharacter1 = {
                                 characterType: charSelected.char_name,
                                 characterName: data.userNameSelected,
                                 hp: charSelected.hp,
                                 attack: charSelected.attack,
                                 defense: charSelected.defence
                             }
+                            
+                         newCharacter2 = {
+                            characterType: "Enemy",
+                            characterName: "Monster",
+                            hp: 500 - (Math.floor((Math.random() * 100) + 1)),
+                            attack: 100 - (Math.floor((Math.random() * 70) + 1)),
+                            defense: 100 - (Math.floor((Math.random() * 70) + 1))
+                        };
 
+
+                            console.log("Character Type :" + newCharacter2.characterType);
+                            console.log("Character Name :" + newCharacter2.characterName);
+                            console.log("Character HP :" + newCharacter2.hp);
+                            console.log("Character Attack :" + newCharacter2.attack);
+                            console.log("Character Defense :" + newCharacter2.defense);
                     });
 
                     function is_checked() {
@@ -66,41 +80,23 @@
                         let DefendBodyCheckedJS = document.getElementById('Defend_body_checked').checked;
                         let DefendLegsCheckedJS = document.getElementById('Defend_legs_checked').checked;
                         event.preventDefault();
-                        console.log("Main Game function working")
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                         function getComputerChoiceAttack() {
                             let CompChoiceAttack = ['comp_head_attack', 'comp_body_attack', 'comp_legs_attack'];
                             let randomNumber = Math.floor(Math.random() * 3);
                             return CompChoiceAttack[randomNumber];
-
                         }
 
                         function getComputerChoiceDefense() {
                             let CompChoiceDefense = ['comp_head_defence', 'comp_body_defence', 'comp_legs_defence'];
                             let randomNumber = Math.floor(Math.random() * 3);
                             return CompChoiceDefense[randomNumber];
-
                         }
-
 
                         function computerAttack() {
 
                             let char2_attackRoll_head = Math.floor((Math.random() * 10) + 1);
                             let char1_defenseRoll_head = Math.floor((Math.random() * 11) + 1);
-
 
                             let char2_attackRoll_body = Math.floor((Math.random() * 15) + 1);
                             let char1_defenseRoll_body = Math.floor((Math.random() * 11) + 1);
@@ -109,256 +105,180 @@
                             let char1_defenseRoll_legs = Math.floor((Math.random() * 11) + 1);
 
                             let CompChoiceAttack = getComputerChoiceAttack();
-                            console.log(CompChoiceAttack);
 
                             if (CompChoiceAttack == 'comp_head_attack') {
 
-                                console.log("Computer attacks Head")
-                                console.log("Comp attack Roll: " + char2_attackRoll_head);
+                                console.log("Enemy attacks Head")
+                                console.log("Enemy attack Roll: " + char2_attackRoll_head);
                                 console.log("Player defense Roll: " + char1_defenseRoll_head);
 
-
-
                                 if (char2_attackRoll_head === 10) {
-                                    console.log("Computer critical hit")
-                                    newCharacter1.hp = newCharacter1.hp - newCharacter2.attack;
-
-                                    console.log("Player.hp: " + newCharacter1.hp)
-                                    console.log(
-                                        "------------------------------------------------------------------------------")
+                                    console.log("Enemy scores a CRITICAL hit")
+                                    console.log("Enemy Attack Damage: " + newCharacter2.attack);
+                                    newCharacter1.hp = Math.floor(newCharacter1.hp - newCharacter2.attack);
+                                    console.log("Player HP: " + newCharacter1.hp)
+                                    console.log("------------------------------------------------------------------------------")
                                 } else if (char2_attackRoll_head >= char1_defenseRoll_head && DefendHeadCheckedJS == true) {
-                                    console.log("DEFENDED!!!")
-                                    console.log("Computer attack is higher")
-                                    console.log("Comp attack Damage: " + newCharacter2.attack);
-                                    console.log("DAMAGE IS HALVED!!!   " + (newCharacter1.defense * 0.5))
-                                    console.log("Computer.attack - 50% Damage)  :  " + (newCharacter2.attack - (newCharacter1.defense *
+                                    console.log("DEFENDED!!!")  
+                                    console.log("Enemy Attack Damage: " + newCharacter2.attack);
+                                    console.log("Enemy Attack - 50% Defense Modifier:  " + Math.floor(newCharacter2.attack - (newCharacter1.defense *
                                         0.5)))
-                                    console.log("Player.hp - Computer.attack - (Player.defense* 0.5)  :  " + (newCharacter1.hp -
-                                        (newCharacter2.attack - (newCharacter1.defense * 0.5))))
-                                    newCharacter1.hp = newCharacter1.hp - (newCharacter2.attack - (newCharacter1.defense * 0.5));
-
-                                    console.log("Player.hp: " + newCharacter1.hp)
-                                    console.log(
-                                        "------------------------------------------------------------------------------")
+                                    newCharacter1.hp = Math.floor(newCharacter1.hp - (newCharacter2.attack - (newCharacter1.defense * 0.5)));
+                                    console.log("Player HP: " + newCharacter1.hp)
+                                    console.log("----------------------------------------------------------------------")
                                 } else if (char2_attackRoll_head >= char1_defenseRoll_head) {
-                                    console.log("Computer attack is higher")
-                                    console.log("Comp attack Damage: " + newCharacter2.attack);
-                                    console.log("Player.defense* 0.2 is   " + (newCharacter1.defense * 0.2))
-                                    console.log("Computer.attack - Player.defense* 0.2)  :  " + (newCharacter2.attack - (
-                                        newCharacter1.defense * 0.2)))
-                                    console.log("Player.hp - Computer.attack - (Player.defense* 0.2)  :  " + (newCharacter1.hp -
-                                        (newCharacter2.attack - (newCharacter1.defense * 0.2))))
-                                    newCharacter1.hp = newCharacter1.hp - (newCharacter2.attack - (newCharacter1.defense * 0.2));
-
-                                    console.log("Player.hp: " + newCharacter1.hp)
-                                    console.log(
-                                        "------------------------------------------------------------------------------")
+                                    console.log("Enemy Attack Damage: " + newCharacter2.attack);
+                                    console.log("Enemy Attack - 20% Defense Modifier:" + Math.floor(newCharacter1.defense * 0.2))
+                                    newCharacter1.hp = Math.floor(newCharacter1.hp - (newCharacter2.attack - (newCharacter1.defense * 0.2)));
+                                    console.log("Player HP: " + newCharacter1.hp)
+                                    console.log("------------------------------------------------------------------------------")
                                 } else if (char2_attackRoll_head < char1_defenseRoll_head) {
-                                    console.log("Computer missed the head")
-                                    console.log("Computer.hp: " + newCharacter2.hp)
-                                    console.log(
-                                        "------------------------------------------------------------------------------")
+                                    console.log("Enemy missed the head")
+                                    console.log("Player HP: " + newCharacter1.hp)
+                                    console.log("------------------------------------------------------------------------------")
                                 }
 
                             };
-
-
 
                             if (CompChoiceAttack == 'comp_body_attack') {
 
-                                console.log("Computer attacks Body")
-                                console.log("Comp attack Roll: " + char2_attackRoll_body);
-                                console.log("Player defense Roll: " + char1_defenseRoll_body);
-                                console.log("Comp attack Damage: " + newCharacter2.attack);
+                                console.log("Enemy attacks Body")
+                                console.log("Enemy attack Roll: " + char2_attackRoll_body);
+                                console.log("Player defense Roll: " + char1_defenseRoll_body);                                
 
                                 if (char2_attackRoll_body === 15) {
-                                    console.log("critical hit")
-                                    newCharacter1.hp = newCharacter1.hp - newCharacter2.attack;
-
-                                    console.log("Player.hp: " + newCharacter1.hp)
-                                    console.log(
-                                        "------------------------------------------------------------------------------")
+                                    console.log("Enemy scores a CRITICAL hit")
+                                    console.log("Enemy Attack Damage: " + newCharacter2.attack);
+                                    newCharacter1.hp = Math.floor(newCharacter1.hp - newCharacter2.attack);
+                                    console.log("Player HP: " + newCharacter1.hp)
+                                    console.log("------------------------------------------------------------------------------")
                                 } else if (char2_attackRoll_body >= char1_defenseRoll_body && DefendBodyCheckedJS == true) {
                                     console.log("DEFENDED!!!")
-                                    console.log("Computer attack is higher")
-                                    console.log("Player.defense* 0.6 is   " + (newCharacter1.defense * 0.6))
-                                    console.log("Computer.attack - 60% Damage)  :  " + (newCharacter2.attack - (newCharacter1.defense *
+                                    console.log("Enemy Attack Damage: " + newCharacter2.attack);
+                                    console.log("Enemy Attack - 60% Defense Modifier:  " + Math.floor(newCharacter2.attack - (newCharacter1.defense *
                                         0.6)))
-                                    console.log("Player.hp - Computer.attack - (Player.defense * 0.6)  :  " + (newCharacter1.hp -
-                                        (newCharacter2.attack - (newCharacter1.defense * 0.6))))
-                                    newCharacter1.hp = newCharacter1.hp - (newCharacter2.attack - (newCharacter1.defense * 0.6));
-
-                                    console.log("Player.hp: " + newCharacter1.hp)
-                                    console.log(
-                                        "------------------------------------------------------------------------------")
+                                    newCharacter1.hp = Math.floor(newCharacter1.hp - (newCharacter2.attack - (newCharacter1.defense * 0.6)));
+                                    console.log("Player HP: " + newCharacter1.hp)
+                                    console.log("------------------------------------------------------------------------------")
                                 } else if (char2_attackRoll_body >= char1_defenseRoll_body) {
-                                    console.log("Computer attack is higher")
-                                    console.log("Player.defense* 0.4 is   " + (newCharacter1.defense * 0.4))
-                                    console.log("Computer.attack - Player.defense* 0.4)  :  " + (newCharacter2.attack - (
-                                        newCharacter1.defense * 0.4)))
-                                    console.log("Player.hp - Computer.attack - (Player.defense * 0.4)  :  " + (newCharacter1.hp -
-                                        (newCharacter2.attack - (newCharacter1.defense * 0.4))))
-                                    newCharacter1.hp = newCharacter1.hp - (newCharacter2.attack - (newCharacter1.defense * 0.4));
-
-                                    console.log("Player.hp: " + newCharacter1.hp)
-                                    console.log(
-                                        "------------------------------------------------------------------------------")
+                                    console.log("Enemy Attack Damage: " + newCharacter2.attack);
+                                    console.log("Enemy Attack - 40% Defense Modifier:  " + Math.floor(newCharacter2.attack - (newCharacter1.defense *
+                                        0.4)))
+                                    newCharacter1.hp = Math.floor(newCharacter1.hp - (newCharacter2.attack - (newCharacter1.defense * 0.4)));
+                                    console.log("Player HP: " + newCharacter1.hp)
+                                    console.log("------------------------------------------------------------------------------")
                                 } else if (char2_attackRoll_body < char1_defenseRoll_body) {
-                                    console.log("Computer missed the body")
-                                    console.log("Player.hp: " + newCharacter2.hp)
-                                    console.log(
-                                        "------------------------------------------------------------------------------")
+                                    console.log("Enemy missed the body")
+                                    console.log("Player HP: " + newCharacter1.hp)
+                                    console.log("------------------------------------------------------------------------------")
                                 }
-
-
                             };
-
-
 
                             if (CompChoiceAttack == 'comp_legs_attack') {
 
-                                console.log("Computer attacks Legs")
-                                console.log("Comp attack Roll: " + char2_attackRoll_legs);
+                                console.log("Enemy attacks Legs")
+                                console.log("Enemy attack Roll: " + char2_attackRoll_legs);
                                 console.log("Player defense Roll: " + char1_defenseRoll_legs);
-                                console.log("Comp attack Damage: " + newCharacter2.attack);
-
+                
                                 if (char2_attackRoll_legs === 20) {
-                                    console.log("Computer critical hit")
-                                    newCharacter1.hp = newCharacter1.hp - newCharacter2.attack;
-                                    console.log("Computer.hp: " + newCharacter2.hp)
-                                    console.log(
-                                        "------------------------------------------------------------------------------")
+                                    console.log("Enemy scores a CRITICAL hit")
+                                    console.log("Enemy Attack Damage: " + newCharacter2.attack);
+                                    newCharacter1.hp = Math.floor(newCharacter1.hp - newCharacter2.attack);
+                                    console.log("Player HP: " + newCharacter1.hp)
+                                    console.log("------------------------------------------------------------------------------")
                                 } else if (char2_attackRoll_legs >= char1_defenseRoll_legs && DefendLegsCheckedJS == true) {
                                     console.log("DEFENDED!!!")
-                                    console.log("attack is higher")
-                                    console.log("Player.defense* 0.8 is   " + (newCharacter1.defense * 0.8))
-                                    console.log("Computer.attack - 80%  :  " + (newCharacter2.attack - (newCharacter1.defense *
+                                    console.log("Enemy Attack Damage: " + newCharacter2.attack);
+                                    console.log("Enemy Attack - 80% Defense Modifier:  " + Math.floor(newCharacter2.attack - (newCharacter1.defense *
                                         0.8)))
-                                    console.log("Player.hp - Computer.attack - (Player.defense* 0.8)  :  " + (newCharacter1.hp -
-                                        (newCharacter2.attack - (newCharacter1.defense * 0.8))))
-                                    newCharacter1.hp = newCharacter1.hp - (newCharacter2.attack - (newCharacter1.defense * 0.8));
-
-                                    console.log("Player.hp: " + newCharacter1.hp)
-                                    console.log(
-                                        "------------------------------------------------------------------------------")
+                                    newCharacter1.hp = Math.floor(newCharacter1.hp - (newCharacter2.attack - (newCharacter1.defense * 0.8)));
+                                    console.log("Player HP: " + newCharacter1.hp)
+                                    console.log("------------------------------------------------------------------------------")
                                 } else if (char2_attackRoll_legs >= char1_defenseRoll_legs) {
-                                    console.log("attack is higher")
-                                    console.log("Player.defense* 0.6 is   " + (newCharacter1.defense * 0.6))
-                                    console.log("Computer.attack - (Player.defense* 0.6)  :  " + (newCharacter2.attack - (
-                                        newCharacter1.defense * 0.6)))
-                                    console.log("Player.hp - Computer.attack - (Player.defense* 0.6)  :  " + (newCharacter1.hp -
-                                        (newCharacter2.attack - (newCharacter1.defense * 0.6))))
-                                    newCharacter1.hp = newCharacter1.hp - (newCharacter2.attack - (newCharacter1.defense * 0.6));
-
-                                    console.log("Player.hp: " + newCharacter1.hp)
-                                    console.log(
-                                        "------------------------------------------------------------------------------")
+                                    console.log("Enemy Attack Damage: " + newCharacter2.attack);
+                                    console.log("Enemy Attack - 60% Defense Modifier:  " + Math.floor(newCharacter2.attack - (newCharacter1.defense *
+                                        0.6)))
+                                    newCharacter1.hp = Math.floor(newCharacter1.hp - (newCharacter2.attack - (newCharacter1.defense * 0.6)));
+                                    console.log("Player HP: " + newCharacter1.hp)
+                                    console.log("------------------------------------------------------------------------------")
                                 } else if (char2_attackRoll_legs < char1_defenseRoll_legs) {
-                                    console.log("Computer missed the legs")
-                                    console.log("Player.hp: " + newCharacter1.hp)
-                                    console.log(
-                                        "------------------------------------------------------------------------------")
-
+                                    console.log("Enemy missed the legs")
+                                    console.log("Player HP: " + newCharacter1.hp)
+                                    console.log("------------------------------------------------------------------------------")
                                 }
-
                             };
                         };
-
 
                         function attackHead() {
                             let char1_attackRoll_head = Math.floor((Math.random() * 10) + 1);
                             let char2_defenseRoll_head = Math.floor((Math.random() * 11) + 1);
                             let CompChoiceDefense = getComputerChoiceDefense();
-                            console.log(CompChoiceDefense)
-                            console.log("Player attacks Head")
+                            console.log("You attack the Head")
                             console.log("Player attack Roll: " + char1_attackRoll_head);
                             console.log("Computer defense Roll: " + char2_defenseRoll_head);
 
                             if (char1_attackRoll_head === 10) {
-                                console.log("critical hit")
-                                newCharacter2.hp = newCharacter2.hp - newCharacter1.attack;
-                                console.log("Computer.hp: " + newCharacter2.hp)
+                                console.log("You Scored a CRITICAL HIT")
+                                newCharacter2.hp = Math.floor(newCharacter2.hp - newCharacter1.attack);
+                                console.log("Enemy HP: " + newCharacter2.hp)
                                 console.log("------------------------------------------------------------------------------")
                             } else if (char1_attackRoll_head >= char2_defenseRoll_head && CompChoiceDefense ==
                                 'comp_head_defence') {
-                                console.log("COMPUTER DEFENDED!!!!")
-                                console.log("Player attack Damage: " + newCharacter1.attack);
-                                console.log("Computer.defense* 0.5 is   " + (newCharacter2.defense * 0.5))
-                                console.log("Player.attack - Computer.defense* 0.5  :  " + (newCharacter1.attack - (
-                                    newCharacter2.defense * 0.5)))
-                                console.log("Computer.hp - Player.attack - (Computer.defense* 0.5  :  " + (newCharacter2.hp - (
-                                    newCharacter1.attack - (newCharacter2.defense * 0.5))))
-                                newCharacter2.hp = newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense * 0.5));
-
-                                console.log("Computer.hp: " + newCharacter2.hp)
+                                console.log("Enemy DEFENDED!!!!")
+                                console.log("Player attack Damage: " + newCharacter1.attack);       
+                                console.log("Your Attack - 50% Defense Modifier:  " + Math.floor(newCharacter1.attack - (
+                                    newCharacter2.defense * 0.5))) 
+                                newCharacter2.hp = Math.floor(newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense * 0.5)));
+                                console.log("Enemy HP: " + newCharacter2.hp)
                                 console.log("------------------------------------------------------------------------------")
                             } else if (char1_attackRoll_head >= char2_defenseRoll_head) {
                                 console.log("attack is higher")
                                 console.log("Player attack Damage: " + newCharacter1.attack);
-                                console.log("Computer.defense* 0.2 is   " + (newCharacter2.defense * 0.2))
-                                console.log("Player.attack - Computer.defense* 0.2  :  " + (newCharacter1.attack - (
+                                console.log("Your Attack - 20% Defense Modifier:  " + Math.floor(newCharacter1.attack - (
                                     newCharacter2.defense * 0.2)))
-                                console.log("Computer.hp - Player.attack - (Computer.defense* 0.2  :  " + (newCharacter2.hp - (
-                                    newCharacter1.attack - (newCharacter2.defense * 0.2))))
-                                newCharacter2.hp = newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense * 0.2));
-
-                                console.log("Computer.hp: " + newCharacter2.hp)
+                                newCharacter2.hp = Math.floor(newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense * 0.2)));
+                                console.log("Enemy HP: " + newCharacter2.hp)
                                 console.log("------------------------------------------------------------------------------")
                             } else if (char1_attackRoll_head < char2_defenseRoll_head) {
                                 console.log("you missed the head")
-                                console.log("Computer.hp: " + newCharacter2.hp)
+                                console.log("Enemy HP: " + newCharacter2.hp)
                                 console.log("------------------------------------------------------------------------------")
                             }
-
                             computerAttack();
-
                         };
 
                         function attackBody() {
                             let char1_attackRoll_body = Math.floor((Math.random() * 15) + 1);
                             let char2_defenseRoll_body = Math.floor((Math.random() * 11) + 1);
                             let CompChoiceDefense = getComputerChoiceDefense();
-                            console.log(CompChoiceDefense)
-
-                            console.log("Body is checked")
-
+                            console.log("You attack the Body")
+                            console.log("Player attack Roll: " + char1_attackRoll_body);
+                            console.log("Computer defense Roll: " + char2_defenseRoll_body);
 
                             if (char1_attackRoll_body === 15) {
-                                console.log("critical hit")
-                                newCharacter2.hp = newCharacter2.hp - newCharacter1.attack;
-
-                                console.log("Computer.hp: " + newCharacter2.hp)
+                                console.log("You Scored a CRITICAL HIT")
+                                newCharacter2.hp = Math.floor(newCharacter2.hp - newCharacter1.attack);
+                                console.log("Enemy HP: " + newCharacter2.hp)
                                 console.log("------------------------------------------------------------------------------")
                             } else if (char1_attackRoll_body >= char2_defenseRoll_body && CompChoiceDefense ==
                                 'comp_body_defence') {
-                                console.log("COMPUTER DEFENDED!!!!")
-                                console.log("attack is higher")
-                                console.log("Computer.defense* 0.6 is   " + (newCharacter2.defense * 0.6))
-                                console.log("Player.attack - Computer.defense* 0.6  :  " + (newCharacter1.attack - (
+                                console.log("Enemy DEFENDED!!!!")                               
+                                console.log("Your Attack - 60% Defense Modifier:  " + Math.floor(newCharacter1.attack - (
                                     newCharacter2.defense * 0.6)))
-                                console.log("Computer.hp - Player.attack - (Computer.defense* 0.6  :  " + (newCharacter2.hp - (
-                                    newCharacter1.attack - (newCharacter2.defense * 0.6))))
-                                newCharacter2.hp = newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense * 0.6));
-
-                                console.log("Computer.hp: " + newCharacter2.hp)
+                                newCharacter2.hp = Math.floor(newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense * 0.6)));
+                                console.log("Enemy HP: " + newCharacter2.hp)
                                 console.log("------------------------------------------------------------------------------")
-                            } else if (char1_attackRoll_body >= char2_defenseRoll_body) {
-                                console.log("attack is higher")
-                                console.log("Computer.defense* 0.4 is   " + (newCharacter2.defense * 0.4))
-                                console.log("Player.attack - Computer.defense* 0.4  :  " + (newCharacter1.attack - (
+                            } else if (char1_attackRoll_body >= char2_defenseRoll_body) {   
+                                console.log("Your Attack - Enemy 40% Defense Modifier:  " + Math.floor(newCharacter1.attack - (
                                     newCharacter2.defense * 0.4)))
-                                console.log("Computer.hp - Player.attack - (Computer.defense* 0.4  :  " + (newCharacter2.hp - (
-                                    newCharacter1.attack - (newCharacter2.defense * 0.4))))
-                                newCharacter2.hp = newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense * 0.4));
-
-                                console.log("Computer.hp: " + newCharacter2.hp)
+                                newCharacter2.hp = Math.floor(newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense * 0.4)));
+                                console.log("Enemy HP: " + newCharacter2.hp)
                                 console.log("------------------------------------------------------------------------------")
                             } else if (char1_attackRoll_body < char2_defenseRoll_body) {
                                 console.log("you missed the body")
-                                console.log("Computer.hp: " + newCharacter2.hp)
+                                console.log("Enemy HP: " + newCharacter2.hp)
                                 console.log("------------------------------------------------------------------------------")
                             }
-
                             computerAttack();
                         };
 
@@ -367,59 +287,56 @@
                             let char1_attackRoll_legs = Math.floor((Math.random() * 20) + 1);
                             let char2_defenseRoll_legs = Math.floor((Math.random() * 11) + 1);
                             let CompChoiceDefense = getComputerChoiceDefense();
-                            console.log(CompChoiceDefense)
+                            console.log("You attack the Legs")
+                            console.log("Player attack Roll: " + char1_attackRoll_legs);
+                            console.log("Computer defense Roll: " + char2_defenseRoll_legs);
 
                             if (char1_attackRoll_legs === 20) {
-                                console.log("critical hit")
-                                newCharacter2.hp = newCharacter2.hp - newCharacter1.attack;
-
-                                console.log("Computer.hp: " + newCharacter2.hp)
+                                console.log("You Scored a CRITICAL HIT")
+                                newCharacter2.hp = Math.floor(newCharacter2.hp - newCharacter1.attack);
+                                console.log("Enemy HP: " + newCharacter2.hp)
                                 console.log("------------------------------------------------------------------------------")
                             } else if (char1_attackRoll_legs >= char2_defenseRoll_legs && CompChoiceDefense ==
                                 'comp_legs_defence') {
-                                console.log("COMPUTER DEFENDED!!!!")
-                                console.log("attack is higher")
-                                console.log("Computer.defense* 0.8 is   " + (newCharacter2.defense * 0.8))
-                                console.log("Player.attack - (Computer.defense* 0.8  :  " + (newCharacter1.attack - (
+                                console.log("Enemy DEFENDED!!!!")                      
+                                console.log("Your Attack - Enemy 80% Defense Modifier:  " + Math.floor(newCharacter1.attack - (
                                     newCharacter2.defense * 0.8)))
-                                console.log("Computer.hp - nPlayer.attack - (Computer.defense* 0.8  :  " + (newCharacter2.hp -
-                                    (newCharacter1.attack - (newCharacter2.defense * 0.8))))
-                                newCharacter2.hp = newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense * 0.8));
-
-                                console.log("Computer.hp: " + newCharacter2.hp)
+                                newCharacter2.hp = Math.floor(newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense * 0.8)));
+                                console.log("Enemy HP: " + newCharacter2.hp)
                                 console.log("------------------------------------------------------------------------------")
-                            } else if (char1_attackRoll_legs >= char2_defenseRoll_legs) {
-                                console.log("attack is higher")
+                            } else if (char1_attackRoll_legs >= char2_defenseRoll_legs) {                                
                                 console.log("Computer.defense* 0.6 is   " + (newCharacter2.defense * 0.6))
-                                console.log("Player.attack - (Computer.defense* 0.6  :  " + (newCharacter1.attack - (
+                                console.log("Your Attack - Enemy 60% Defense Modifier:  " + Math.floor(newCharacter1.attack - (
                                     newCharacter2.defense * 0.6)))
-                                console.log("Computer.hp - nPlayer.attack - (Computer.defense* 0.6  :  " + (newCharacter2.hp -
-                                    (newCharacter1.attack - (newCharacter2.defense * 0.6))))
-                                newCharacter2.hp = newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense * 0.6));
-
-                                console.log("Computer.hp: " + newCharacter2.hp)
+                                newCharacter2.hp = Math.floor(newCharacter2.hp - (newCharacter1.attack - (newCharacter2.defense * 0.6)));
+                                console.log("Enemy HP: " + newCharacter2.hp)
                                 console.log("------------------------------------------------------------------------------")
                             } else if (char1_attackRoll_legs < char2_defenseRoll_legs) {
                                 console.log("you missed the head")
-                                console.log("Computer.hp: " + newCharacter2.hp)
+                                console.log("Enemy HP: " + newCharacter2.hp)
                                 console.log("------------------------------------------------------------------------------")
                             }
                             computerAttack();
                         };
 
                         if (AttackHeadCheckedJS == true) {
-                            console.log("AttackHeadCheckedJS is recognized")
                             attackHead();
                         } else if (AttackBodyCheckedJS == true) {
-                            console.log("AttackBodyCheckedJS is recognized")
                             attackBody();
                         } else if (AttackLegsCheckedJS == true) {
-                            console.log("AttackLegsCheckedJS is recognized")
                             attackLegs();
                         }
+
+                        if(newCharacter1.hp <=0){
+                            alert("you lose");
+                        }
+
+                        if(newCharacter2.hp <=0){
+                            alert("you win");
+                        }
+
+
                     };
-
-
 
 
 
