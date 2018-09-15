@@ -3,7 +3,7 @@ window.onload = function() {
 
     var timer = setTimeout(function() {
         window.location='/welcome'
-    }, 53000);
+    }, 45000);
 
     timer();
 
