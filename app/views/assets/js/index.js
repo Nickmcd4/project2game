@@ -8,7 +8,7 @@ window.onload = function() {
     timer();
 
 
-    document.getElementById("skipper").onclick = function () {
+    document.getElementById("#skipper").onclick = function () {
         window.location = "/welcome";
     };
 }
