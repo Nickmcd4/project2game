@@ -1,6 +1,12 @@
 var models = require("../models/index");
 var exports = module.exports = {}
 
+exports.welcome = function(req, res) {
+ 
+    res.render('welcome');
+ 
+}
+
 exports.signup = function(req, res) {
  
     res.render('signup');

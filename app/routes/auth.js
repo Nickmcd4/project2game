@@ -6,6 +6,9 @@ var models = require("../models/index");
 module.exports = function(app, passport) {
     var charSelected;
  
+    
+    app.get('/welcome', authController.welcome);
+
     app.get('/signup', authController.signup);
  
  
