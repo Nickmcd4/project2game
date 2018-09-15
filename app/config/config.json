@@ -2,9 +2,9 @@
  
     "development": {
  
-        "username": "oz3vb7c3y57kn9vh",
+        "username": "",
  
-        "password": "bcsi2h37q8a7h3zg",
+        "password": "",
  
         "database": "wnkuqw7nsb774a11",
  
@@ -18,9 +18,9 @@
  
     "test": {
  
-        "username": "oz3vb7c3y57kn9vh",
+        "username": "",
  
-        "password": "bcsi2h37q8a7h3zg",
+        "password": "",
  
         "database": "wnkuqw7nsb774a11",
  
