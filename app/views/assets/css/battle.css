@@ -1,5 +1,6 @@
-html{
+body{
     color:white;
+    font-family: 'MedievalSharp', cursive;
 }
 
 #pageContainer {
@@ -38,6 +39,20 @@ html{
     height: 100%;
     z-index: 3;
 }
+.characterContainer {
+    z-index: 2;
+    left: 20%;
+    bottom: 30%;
+    position: absolute;
+    width: 10%;
+    height: 30%;
+    background-size: contain;
+}
+.characterImg{
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
 
 
 
@@ -70,6 +85,7 @@ html{
     background-color: black;
     position: absolute;
     bottom:0;
+    overflow: hidden;
 }
 .group1{
     background-color: black;
@@ -90,18 +106,39 @@ html{
     background-image: url(../images/Parchment.jpg);
     position: absolute;
     width: 100%;
+    
+    
+}
+.down{
+    margin-top: 5px;
+    font-size: 150%;
 }
 .topBanner2{
     height: 30%;
     position: absolute;
     width: 100%;
     background-image: url(../images/Parchment.jpg);
+    text-align: center;
 }
 .bodySelect{
     width: 30px;
     height:30px;
 }
+#submitBtn{
+ right:30px;
+ bottom: 45%;
+position: absolute;
+}
 
+input[type=submit] { 
+    background: url(http://www.simpleimageresizer.com/_uploads/photos/88a97f46/dd-dice-png-6_30x30.png);
+    border: 0;
+    display: block;
+    height: 30px;
+    width: 30px;
+    z-index: 100;
+    outline: none;
+}
 
 
 
@@ -114,36 +151,93 @@ html{
     height: 100%;
     position: absolute;
     margin-left: 33.333%;
-    text-align: center;
+    
 }
 .topDisplay{
     height:50%;
+  
     position: absolute;
     width: 100%;
     background-color: black;
+
 }
 .bottomDisplay{
+    
     height: 50%;
     bottom:0;
     position: absolute;
     width: 100%;
     background-color: black;
+
 }
 .fightConsole{
-    background-color: green;
+    
     width: 33.333%;
     height: 100%;
     position: absolute;
     margin-left: 66.666%;
 }
+.consoleField{
+    padding-top: 3%;
+    width:100%;
+    height: 85%;
+    background-color: black;
+    position: absolute;
+    bottom:0;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+li{
+    left: 30px;
+}
+
+    ul.b {
+        list-style-position: inside;
+    }
+
+.style-5::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #A87C29;
+}
+
+.style-5::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: black;
+}
+
+.style-5::-webkit-scrollbar-thumb
+{
+	background-color: black;
+	
+	background-image: -webkit-gradient(linear, 0 0, 0 100%,
+	                   color-stop(.5, rgba(255, 255, 255, .2)),
+					   color-stop(.5, transparent), to(transparent));
+}
 
 
+.playerField{
+    padding-top: 3%;
+    width:100%;
+    height: 70%;
+    background-color: black;
+    position: absolute;
+    bottom:0;
+    overflow: scroll;
+    overflow-x: hidden;
+}
 
-
-
-
-
-
+.enemyField{
+    padding-top: 3%;
+    width:100%;
+    height: 70%;
+    background-color: black;
+    position: absolute;
+    bottom:0;
+    overflow: scroll;
+    overflow-x: hidden;
+}
 
 
 
